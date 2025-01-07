@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Personales</title>
+</head>
+<body>
+    
+    <form id="formulario">
+        <label>Nombre</label>
+        <input type="text" name="name" value="Yoslen">
+        <br><br>
+        <label>Apellido</label>
+        <input type="text" name="apellido" value="Sanchez">
+    </form>
+    <button onclick="mifuncion()">Enviar</button>
+    <div id="mostrardata"></div>
+    <script>
+        function mifuncion(){
+            let = formulario = document.forms["formulario"];
+            let texto="";
+            for(let element of formulario){
+                texto += element.value + '<br/>';
+            }
+            document.getElementById("mostrardata").innerHTML=texto;
+            document.getElementById("mostrardata").style.color='red';
+            console.log(texto);
+        }
+    </script>
+
+
+</body>
+</html>

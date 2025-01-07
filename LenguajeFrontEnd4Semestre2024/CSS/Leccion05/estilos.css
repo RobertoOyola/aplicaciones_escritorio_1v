@@ -1,0 +1,41 @@
+.estatico{
+background-color: yellow;
+border: 5px solid red;
+position: static;
+left: 15px;
+bottom: 15px;    
+}
+
+
+.relativo{
+    background-color: blue;
+    border: 5px solid green;
+    position: relative;
+    left: 45px;
+    top: 200px;    
+}
+
+.fijo{
+    background-color: rgb(255, 0, 106);
+    border: 5px solid rgb(128, 94, 0);
+    position: fixed;
+    left: 0px;
+    bottom: 0px;    
+}
+
+.absoluto{
+    background-color: rgb(0, 255, 200);
+    border: 5px solid rgb(2, 1, 1);
+    position: absolute;
+    right: 40px;
+    top: 20px;    
+}
+
+
+.pegajoso{
+    background-color: rgb(0, 255, 200);
+    border: 5px solid rgb(2, 1, 1);
+    position: sticky;
+    left: 0px;
+    top: 0px;    
+}

@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Asegura que el padding y el margen se incluyan en el tamaño total */
+}
+
+.imagenNav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Hace que la barra de navegación sea fija */
+    top: 0; /* Se posiciona en la parte superior de la página */
+    left: 0;
+    right: 0;
+    background-color: #333; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+}
+
+.imagenNav img{
+    width: 15%;
+}
+
+.navegacion{
+    clear: both;
+    text-align: center;
+    padding-top: 95px;
+}
+
+.navegacion nav ul li a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.navegacion nav ul li a:hover{
+    background-color: rgb(189, 189, 189);
+    margin: 20px;
+    padding: 12px;
+    font-size: large;
+}
+
+.navegacion nav ul{
+    border-bottom: 5px solid gray;
+    border-top:  5px solid gray;
+    margin: 5px;
+    padding: 10px;
+}
+
+.navegacion nav ul li{
+    display: inline;
+    margin: 15px;
+}
+
+main{
+    margin: 20px;
+}
+
+.imagenAseinatos{
+    padding-left: 100px;
+}
+
+.imagenAseinatos > section{
+    float: left;
+    width: 25%;
+    margin: 10px;
+}
+
+.imagenAseinatos section section img{
+    width: 100%;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* Sombra en la parte inferior */
+    transition: transform 0.3s ease;
+}
+
+.imagenAseinatos section section img:hover {
+    transform: scale(1.1); /* Aumenta el tamaño de la imagen al 120% */
+}
+
+
+.imagenAseinatos section section article p a{
+    text-decoration: none;
+    color: black;
+    }
+
+.imagenAseinatos section section article p a:hover{
+color: red;
+}
+
+
+.imagenAseinatos header span{
+    border-left: 15px solid red;
+    padding: 8px;
+    margin-left: 2px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    display: block;
+    clear: both;
+}
+
+
+footer{
+    background-color: red;
+    display: block;    
+    color: white;
+    clear: both;
+    position: relative; /* Posiciona el footer normalmente */
+    bottom: 0; /* Coloca el footer en la parte inferior del contenedor */
+}
+
+footer p{
+    font-size: 3em;
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+}
+
+.roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: larger;
+    text-align: center;
+  }
+
+.poppins-thin{
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+  
+  .poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+  }
+  
+  .poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+  }
+  
+  .poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  .poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+  
+  .poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+  }
+  
+  .poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+  }
+  
+  .poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+  }
+  
+  .poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  

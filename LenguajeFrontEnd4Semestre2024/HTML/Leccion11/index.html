@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Formularios en HTML</h1>
+
+    <form action="" method="">
+
+        <fieldset>
+            <legend>Datos personales:</legend>
+
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escriba aqui su nombre" required="true">
+            <br/>
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" placeholder="Escriba aqui su apellido" required="true">
+            <br/>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required="true">
+            <br/>
+            <label for="edad">Edad</label>
+            <input type="number" name="edad" id="edad" step="any" required="true">
+            <br/>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required="true">
+            <br>
+            <label for="genero">Genero</label>
+            <br/>
+            <input type="radio" name="genero" id="femenino">
+            <label for="">Femenino</label>
+            <input type="radio" name="genero" id="masculino">
+            <label for="">Masculino</label>
+            <br/>
+            <label for="musica">Genero Musica Favorita</label>
+            <br/>
+            <input type="checkbox" id="jazz" name="genero">
+            <label for="">Musica Jazz</label>
+            <br/>
+            <input type="checkbox" id="clasica" name="genero">
+            <label for="">Musica Clasica</label>
+            <br/>
+
+            <button type="submit">Enviar</button>
+            <br>
+            <button type="submit" formnovalidate="formnovalidate">Enviar sin validacion</button>
+
+        </fieldset>
+
+    </form>
+
+
+</body>
+</html>

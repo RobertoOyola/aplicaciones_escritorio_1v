@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 1px solid black;
+            width: 100%;
+            margin: 100px, 100px, 100px, 100px;
+        }
+        table th{
+            padding: 2px;
+        }
+        th{
+            background-color: rgb(111, 111, 244);
+            border-left: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Registro de Persona</h1>
+    <form id="formularios" onsubmit="registrarEstudiante(event)">
+        <label>Nombre: </label><input type="text" name="nombre">
+        <br/><br/>
+        <label>Apellido: </label><input type="text" name="apellido">
+        <button type="submit">Enviar</button>
+    </form>
+
+    <h2>Listado de Estudiantes</h2>
+    
+    <table id="listaEstudiante">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aqui va mi Arreglo lsitaEstudiante -->
+        </tbody>
+        
+    </table>
+
+    <script>
+        let listaEstudiante = [];
+        function registrarEstudiante(objetoEvent){
+            objetoEvent.preventDefault(); //Sirve para que la pagina no se te refresque
+            const formularios = document.forms['formularios']
+            const nombre = formularios['nombre'].value;
+            const apellido = formularios['apellido'].value;
+
+            const estudiante = {
+                name : nombre,
+                secondName : apellido
+            }
+
+            listaEstudiante.push(estudiante);
+            console.log(listaEstudiante);
+            mostrarListaEstudiante();
+        }
+
+        function mostrarListaEstudiante() {
+            const formulario = document.getElementById('listaEstudiante').getElementsByTagName('tbody')[0];
+
+            formulario.innerHTML="";
+            for(let i=0; i < listaEstudiante.length; i++ ){
+                const nuevaFila =formulario.insertRow();
+                const estudiante = listaEstudiante[i];
+                nuevaFila.innerHTML = `<td>${estudiante.name}</td>
+                                        <td>${estudiante.secondName}</td>
+                                        <th><button onclick="eliminar(${i})">Eliminar</button></th>
+                                        `
+                                        ;
+
+                console.log(nuevaFila.innerHTML);
+            }
+        }
+
+        function eliminar(index){
+            listaEstudiante.splice(index,1);
+            mostrarListaEstudiante();
+           }
+
+
+    </script>
+
+</body>
+</html>

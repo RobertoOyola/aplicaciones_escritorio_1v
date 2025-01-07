@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form id="formulario">
+        <label>Nombre:</label>
+        <input type="number" name="a" >
+        <br><br>
+        <label>Apellido</label>
+        <input type="number" name="b">
+        <br><br>
+    </form>
+    <button onclick="miFuncion()"> Enviar</button>
+    <div id="setNombre"></div>
+
+
+    <script>
+        function miFuncion(){
+                let formulario = document.forms["formulario"];
+            
+            let a =parseInt(formulario["a"].value);
+            let b = parseInt(formulario["b"].value);
+            let suma = a+b;
+            //console.log(suma);
+            document.getElementById("setNombre").innerHTML="la suma es: "+suma;
+        }
+    
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+/*p.cajaparrafo{
+    background-color: yellow;
+}
+
+
+div p{
+  background-color: blue;  
+}
+  */
+
+/*div > section{
+    background-color: red;
+}*/
+/*
+p + section{
+    background-color: violet;
+}*/
+
+/*
+p ~ section{
+    background-color: yellow;
+}
+*/
+
+/*
+a:hover{
+    background-color: rgb(255, 0, 0);
+    color: black;
+    text-decoration: none;
+}
+
+ul{
+    list-style-type: none;
+}*/
+
+
+p::selection{
+    background-color: yellow;
+    color: red;
+}
+
+p::first-line{
+    font-variant: small-caps;
+}
+
+p::first-letter{
+    font-size: 2em;
+    color: red;
+}
+

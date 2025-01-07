@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 onclick="verConsola(this)">Intituto Simon Bolivar</h1>
+    <h2 id="segtitulo">Segundo Titulo</h2>
+    <h2>Joel</h2>
+    <script>
+        function verConsola(objetoThis){
+            console.log("Clickeado");
+            console.log(objetoThis);
+            console.log(objetoThis.innerHTML);
+        }
+
+        const obtenerTitulo = document.getElementsByTagName('h2');
+        /*console.log(obtenerTitulo);
+        console.log(obtenerTitulo[1].innerHTML);*/
+        for(let element of obtenerTitulo){
+            console.log(element.innerHTML);
+        }
+
+        const obtenerSegunTitulo = document.getElementById('segtitulo');
+        console.log(obtenerSegunTitulo.innerHTML);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+div h1{
+    padding: 20px;
+    background-color: blueviolet;
+    border: 3px solid red;
+    text-align: center;
+}
+
+.izquierda{
+    float: left;
+    height: 100%;
+    background-color: red;
+    width: 50%;
+}
+
+.derecha{
+    float: right;
+    background-color: yellow;
+    width: 50%;
+}
+
+
+p{
+    border: 3px dashed green;
+    width: 47%;
+    float: right;
+}

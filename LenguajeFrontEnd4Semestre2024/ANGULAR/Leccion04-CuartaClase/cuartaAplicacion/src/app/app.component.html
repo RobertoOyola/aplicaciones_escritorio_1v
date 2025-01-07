@@ -1,0 +1,57 @@
+<div>
+  <h1>Consumiendo mi primera Api</h1>
+  <h2>Servicios y Observables en Angular</h2>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <ul class="list-group">
+      @if(usuarios.length>0){
+        @for (item of usuarios; track item.id) {
+          <li class="list-group-item">{{item.id}} - {{item.name}} - {{item.username}} - {{item.email}}</li>
+        }
+      }@else {
+        <li class="list-group-item-danger">No Hay Usuarios Disponibles </li>
+      }
+    </ul>
+  </div>
+
+</div>
+
+
+<div class="d-flex justify-content-center" style="width: 80%;margin: 20px;padding: 20px;">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Apellido </th>
+      <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+</div>

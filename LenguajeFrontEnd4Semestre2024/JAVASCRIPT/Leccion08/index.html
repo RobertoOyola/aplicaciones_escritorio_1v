@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos Personales</title>
+</head>
+<body>
+    
+    <form id="formulario">
+        <label>Ingrese el primer numero</label>
+        <input type="number" name="numeroa" value="">
+        <br><br>
+        <label>Ingrese el segundo numero</label>
+        <input type="number" name="numerb" value="">
+    </form>
+    <button onclick="mifuncion()">Sumar</button>
+    <div id="mostrardata"></div>
+    <script>
+        function mifuncion(){
+            let = formulario = document.forms["formulario"];
+            let a = parseInt(formulario["numeroa"].value);
+            let b = parseInt(formulario["numerb"].value);
+            let suma = a+b;
+            document.getElementById("mostrardata").innerHTML="La suma es: "+suma;
+            document.getElementById("mostrardata").style.color='red';
+            console.log(texto);
+        }
+    </script>
+
+
+</body>
+</html>

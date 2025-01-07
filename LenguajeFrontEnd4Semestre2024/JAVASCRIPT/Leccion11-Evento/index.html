@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1 onclick="verConsola(event)">Intituto Simon Bolivar</h1>
+    <h2 id="segtitulo">Segundo Titulo</h2>
+    <h2>Joel</h2>
+    <script>
+        function verConsola(objetoEvent){
+            console.log(objetoEvent);
+            objetoEvent.target.innerHTML='Liceo Cristiano';
+            console.log(objetoEvent.target.innerHTML);
+        }
+
+    </script>
+
+</body>
+</html>

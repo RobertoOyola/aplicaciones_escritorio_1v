@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .azul{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <h class="azul">Documento Object Model</h>
+    <p id="parrafo" class="azul">Parrafo 1</p>
+    <p class="azul">Parrafo 2</p>
+
+    <script>
+        let miParrafo= document.getElementById("parrafo");
+        console.log(miParrafo.innerHTML);
+        //miParrafo.innerHTML="El Noticiero";
+
+        let miParrafos= document.getElementsByTagName("p");
+        for(let elemento of miParrafos){
+            console.log(elemento.innerHTML);
+        }
+
+        let miParrafosClassName= document.getElementsByClassName("azul");
+        for(let elementos of miParrafosClassName){
+            console.log(elementos.innerHTML);
+        }
+
+        let miParrafoQuerySelector= document.querySelectorAll("p.azul");
+        console.log(miParrafoQuerySelector);
+        for(let elementos of miParrafoQuerySelector){
+            console.log(elementos.innerHTML);
+        }
+
+    </script>
+
+</body>
+</html>

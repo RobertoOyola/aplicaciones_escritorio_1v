@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Campo de Texto - Eventos</h1>
+    
+    <label>Nombre: </label><input type="text" onchange="verPorConsolaCambio(event)">
+
+    <script>
+    
+    function verPorConsolaCambio(objetoEvent){
+        const obtenerResultado = objetoEvent.target.value;
+        const formateado =obtenerResultado.toUpperCase();
+        objetoEvent.target.value = formateado;
+        console.log(objetoEvent.target.value);
+    }
+    
+
+    </script>
+
+</body>
+</html>
