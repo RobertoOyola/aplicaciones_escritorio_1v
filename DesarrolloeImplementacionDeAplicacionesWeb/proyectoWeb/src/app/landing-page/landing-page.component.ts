@@ -1,16 +1,21 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ListadoPeliculasComponent } from '../peliculas/listado-peliculas/listado-peliculas.component';
 import { MenuComponent } from '../compartidos/componentes/menu/menu.component';
 import { RatingComponent } from '../compartidos/componentes/rating/rating.component';
+import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-landing-page',
-  imports: [CommonModule, ListadoPeliculasComponent, RatingComponent],
+  imports: [CommonModule, ListadoPeliculasComponent, RatingComponent, MatButtonModule],
   templateUrl: './landing-page.component.html',
   styleUrl: './landing-page.component.css'
 })
 export class LandingPageComponent  implements OnInit{
+
+  router= inject(Router);
+
   title = 'proyectoWeb';
   peliculasEnCine!: any[];
   peliculasEnEstreno!: any[];
@@ -70,6 +75,8 @@ export class LandingPageComponent  implements OnInit{
    }
 
 
-
+   irCrearPelicula() {
+    this.router.navigate(['peliculas/crear']);
+    }
 
 }

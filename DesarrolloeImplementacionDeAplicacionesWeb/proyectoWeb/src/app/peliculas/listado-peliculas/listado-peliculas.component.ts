@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ListadoGenericoComponent } from '../../compartidos/componentes/listado-generico/listado-generico.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-listado-peliculas',
@@ -11,6 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
     styleUrl: './listado-peliculas.component.css'
 })
 export class ListadoPeliculasComponent {
+
+  router = inject(Router);
 
   @Input({required: true}) listadPeliculas: any=[];
 
@@ -26,6 +29,10 @@ export class ListadoPeliculasComponent {
   removerPelicula(pelicula: any){
     const indice = this.listadPeliculas.findIndex((peliculaActual:any)=> peliculaActual.titulo === pelicula.titulo);
     this.listadPeliculas.splice(indice,1);
+  }
+
+  irCrearPelicula() {
+    this.router.navigate(['peliculas/crear']);
   }
 
 }
