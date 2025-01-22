@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ListadoGenericoComponent } from '../../compartidos/componentes/listado-generico/listado-generico.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-listado-peliculas',
@@ -13,26 +12,20 @@ import { Router } from '@angular/router';
 })
 export class ListadoPeliculasComponent {
 
-  router = inject(Router);
-
   @Input({required: true}) listadPeliculas: any=[];
 
-  agregarPelicula(){
+  /*agregarPelicula(){
     this.listadPeliculas.push({
       titulo: 'Piratas del caribe 8',
       fechaLanzamiento: new Date('2029-03-02'),
       precio: 147.62,
       poster: ''
     });
-  }
+  }*/
 
-  removerPelicula(pelicula: any){
+  /*removerPelicula(pelicula: any){
     const indice = this.listadPeliculas.findIndex((peliculaActual:any)=> peliculaActual.titulo === pelicula.titulo);
     this.listadPeliculas.splice(indice,1);
-  }
-
-  irCrearPelicula() {
-    this.router.navigate(['peliculas/crear']);
-  }
+  }*/
 
 }

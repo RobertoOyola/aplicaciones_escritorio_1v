@@ -1,43 +1,36 @@
-
-
 <app-listado-generico [listado]="listadPeliculas">  
   <ng-container contenido>
-
+    
     <div class="peliculas-contenedor">
       @for (pelicula of listadPeliculas; track $index) {
         <div class="pelicula-contenedor">
-          <a href="">
-            @if (pelicula.poster) {
-              <img [src]="pelicula.poster" alt="" height="250" width="169">
-            }
-            @else {
+          <a>
+            @if(pelicula.poster){
+              <img [src]="pelicula.poster" width="169" height="250">
+            }@else {
               <img src="https://jkfenner.com/wp-content/uploads/2019/11/default.jpg" width="169" height="250">
             }
           </a>
           <p>
-            <a href="">
-              {{pelicula.titulo}}
-            </a>
+            <a>{{pelicula.titulo}}</a>
           </p>
           <div>
-            <a mat-flat-button>Editar</a>
-            <button mat-flat-button type="button" color="warn" style="background-color: red;">Borrar</button>
+            <a mat-flat-button >Editar</a>
+            <button mat-flat-button type="button" color="warn"  style="background-color: rgb(218, 12, 12);">Borrar</button>
           </div>
         </div>
       }
     </div>
-    
+
   </ng-container>
-</app-listado-generico>
+ </app-listado-generico>
 
-
-
-
-<!-- <button (click)="agregarPelicula()">Agregar Peliculas</button>
-
+<!-- 
+ <button (click)="agregarPelicula()">Agregar Peliculas</button>
 
  <app-listado-generico [listado]="listadPeliculas">  
   <ng-container contenido>
+
     @for (pelicula of listadPeliculas; track $index) {
       <div class="contendor-peliculas">
         <div style="display: flex; flex-direction: row; gap: 10px">
@@ -62,9 +55,15 @@
         </div>
      </div>
     }
+    
   </ng-container>
  </app-listado-generico>
 
- -->
+-->
+
+
+
+
+
   
 

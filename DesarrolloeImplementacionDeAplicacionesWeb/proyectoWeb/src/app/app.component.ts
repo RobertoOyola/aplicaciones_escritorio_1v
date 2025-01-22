@@ -7,10 +7,10 @@ import { RatingComponent } from "./compartidos/componentes/rating/rating.compone
 
 @Component({
     selector: 'app-root',
-    imports: [CommonModule, MenuComponent, RouterOutlet],
+    imports: [CommonModule, MenuComponent,RouterOutlet /*,RatingComponent*/],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })
-export class AppComponent{
+export class AppComponent {
 
 }

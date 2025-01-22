@@ -1,22 +1,11 @@
-import { Component, inject } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-crear-pelicula',
-  imports: [MatButtonModule],
+  imports: [],
   templateUrl: './crear-pelicula.component.html',
   styleUrl: './crear-pelicula.component.css'
 })
 export class CrearPeliculaComponent {
-
-  router = inject(Router);
-
-cancelarCambios() {
-  this.router.navigate(['/']);
-}
-guardarCambios() {
-  this.router.navigate(['/']);
-}
 
 }
