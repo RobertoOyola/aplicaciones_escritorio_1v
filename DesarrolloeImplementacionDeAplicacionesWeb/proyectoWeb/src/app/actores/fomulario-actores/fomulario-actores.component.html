@@ -1,33 +1,42 @@
-<form [formGroup]="form" (submit)="guardarCambios()">
-    <div class="container">
-      <div class="row">
-        <mat-form-field appearance="outline">
-          <mat-label>Nombre</mat-label>
-          <input matInput [formControl]="form.controls.nombre">
-          <mat-error>{{ obtenerMensajeError('nombre') }}</mat-error>
-        </mat-form-field>
-      </div>
-      
-      <div class="row">
-        <mat-form-field appearance="outline">
-          <mat-label>Fecha Nacimiento</mat-label>
-          <input matInput type="date" [formControl]="form.controls.fechaNacimiento">
-          <mat-error>{{ obtenerMensajeError('fechaNacimiento') }}</mat-error>
-        </mat-form-field>
-      </div>
-  
-      <div class="row">
-        <mat-form-field appearance="outline">
-          <mat-label>Foto</mat-label>
-          <input matInput (change)="onFileSelected($event)" [formControl]="form.controls.foto">
-          <mat-error>{{ obtenerMensajeError('foto') }}</mat-error>
-        </mat-form-field>
-      </div>
+<form [formGroup]="form" (ngSubmit)="guardarCambios()">
+  <div class="container">
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre">
+        <mat-error *ngIf="form.get('nombre')?.invalid">
+          {{ obtenerMensajeError('nombre') }}
+        </mat-error>
+      </mat-form-field>
     </div>
-  
-    <div>
-      <button mat-flat-button type="submit" [disabled]="form.invalid">Guardar Cambios</button>
-      <a mat-stroked-button routerLink="/actores">Cancelar</a>        
+
+    <div class="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input matInput type="date" formControlName="fechaNacimiento">
+        <mat-error *ngIf="form.get('fechaNacimiento')?.invalid">
+          {{ obtenerMensajeError('fechaNacimiento') }}
+        </mat-error>
+      </mat-form-field>
     </div>
-  </form>
-  
+
+    <div class="row">
+      <button mat-raised-button type="button" (click)="fileInput.click()">Seleccionar Foto</button>
+      <input #fileInput type="file" hidden (change)="onFileSelected($event)">
+      <p *ngIf="selectedFileName">Archivo seleccionado: {{ selectedFileName }}</p>
+      <mat-error *ngIf="form.get('foto')?.hasError('tooLarge')">
+        El archivo seleccionado es demasiado grande. Seleccione un archivo de menos de 1MB.
+      </mat-error>
+      <mat-error *ngIf="form.get('foto')?.invalid && !form.get('foto')?.hasError('tooLarge')">
+        {{ obtenerMensajeError('foto') }}
+      </mat-error>
+    </div>
+  </div>
+
+  <div>
+    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">
+      Guardar Cambios
+    </button>
+    <a mat-stroked-button routerLink="/actores">Cancelar</a>
+  </div>
+</form>
