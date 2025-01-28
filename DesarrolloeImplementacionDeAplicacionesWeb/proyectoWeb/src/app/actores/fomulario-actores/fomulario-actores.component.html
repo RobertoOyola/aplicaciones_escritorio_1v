@@ -1,0 +1,33 @@
+<form [formGroup]="form" (submit)="guardarCambios()">
+    <div class="container">
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput [formControl]="form.controls.nombre">
+          <mat-error>{{ obtenerMensajeError('nombre') }}</mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Fecha Nacimiento</mat-label>
+          <input matInput type="date" [formControl]="form.controls.fechaNacimiento">
+          <mat-error>{{ obtenerMensajeError('fechaNacimiento') }}</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Foto</mat-label>
+          <input matInput (change)="onFileSelected($event)" [formControl]="form.controls.foto">
+          <mat-error>{{ obtenerMensajeError('foto') }}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  
+    <div>
+      <button mat-flat-button type="submit" [disabled]="form.invalid">Guardar Cambios</button>
+      <a mat-stroked-button routerLink="/actores">Cancelar</a>        
+    </div>
+  </form>
+  
