@@ -27,9 +27,11 @@
       <mat-error *ngIf="form.get('foto')?.hasError('tooLarge')">
         El archivo seleccionado es demasiado grande. Seleccione un archivo de menos de 1MB.
       </mat-error>
+      <!--
       <mat-error *ngIf="form.get('foto')?.invalid && !form.get('foto')?.hasError('tooLarge')">
         {{ obtenerMensajeError('foto') }}
       </mat-error>
+      -->
     </div>
   </div>
 
