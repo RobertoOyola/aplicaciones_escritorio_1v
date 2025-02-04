@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { icon, latLng, LeafletMouseEvent, marker, Marker, MarkerOptions, tileLayer } from 'leaflet';
+import { Coordenadas } from './coordenadas';
 
 @Component({
   selector: 'app-mapas',
@@ -9,6 +10,8 @@ import { icon, latLng, LeafletMouseEvent, marker, Marker, MarkerOptions, tileLay
   styleUrl: './mapas.component.css'
 })
 export class MapasComponent {
+  @Output() coordenadasSeleccionadas = new EventEmitter<Coordenadas>();
+
   options = {
     layers: [
       tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '...' })
@@ -17,23 +20,29 @@ export class MapasComponent {
     center: latLng(46.879966, -121.726909)
   };
 
-  markerOptions:MarkerOptions= {
+  markerOptions: MarkerOptions = {
     icon: icon({
-      iconSize:[25, 41],
-      iconAnchor:[13, 41],
+      iconSize: [25, 41],
+      iconAnchor: [13, 41],
       iconUrl: 'assets/marker-icon.png',
       iconRetinaUrl: 'assets/marker-icon-2x.png',
       shadowUrl: 'assets/marker-shadow.png'
     })
-  }
+  };
 
-  capas: Marker<any>[]=[];
+  capas: Marker<any>[] = [];
 
-  manejarClick(event: LeafletMouseEvent){
+  manejarClick(event: LeafletMouseEvent) {
     const latitude = event.latlng.lat;
     const longitude = event.latlng.lng;
 
-    this.capas = [];
-    this.capas.push(marker([latitude, longitude],this.markerOptions))
+    // Emitir las coordenadas seleccionadas
+    this.coordenadasSeleccionadas.emit({ latitud: latitude, longitud: longitude });
+
+    // Añadir un marcador en las coordenadas seleccionadas
+    const newMarker = marker([latitude, longitude], this.markerOptions);
+
+    // Añadir el marcador a las capas para que se muestre en el mapa
+    this.capas = [newMarker];  // O usar `this.capas.push(newMarker);` si quieres agregar múltiples marcadores.
   }
 }

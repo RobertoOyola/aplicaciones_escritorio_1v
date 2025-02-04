@@ -1,3 +1,50 @@
 <h2>Actores</h2>
 <button mat-flat-button routerLink="/actores/crear">Crear Actores</button>
 <button mat-stroked-button routerLink="">Cancelar</button>
+
+<table mat-table [dataSource]="listaActores" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element" style="text-transform: capitalize;"> {{element.nombre}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="fechaNacimiento">
+        <th mat-header-cell *matHeaderCellDef> fechaNacimiento </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaNacimiento}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+    <ng-container matColumnDef="foto">
+        <th mat-header-cell *matHeaderCellDef> foto </th>
+        <td mat-cell *matCellDef="let element" style="text-align: center; padding: 2%;">
+            <img [src]="element.foto" alt="Foto del actor" style="height: 200px; border-radius: 20%; border: 4px solid black;">
+        </td>
+      </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="accion">
+      <th mat-header-cell *matHeaderCellDef> Elemento </th>
+      <td mat-cell *matCellDef="let element">
+        <a mat-flat-button routerLink="/actores/editar/{{element.id}}"> Editar</a>
+        <button mat-flat-button style="background-color: red;">Borrar</button>
+      </td>
+    </ng-container>
+  >
+  
+    <tr mat-header-row *matHeaderRowDef="columnasMostrar"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnasMostrar;"></tr>
+  </table>
+  
+  
