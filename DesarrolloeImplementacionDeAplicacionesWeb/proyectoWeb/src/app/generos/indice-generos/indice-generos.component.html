@@ -31,6 +31,12 @@
   
     <tr mat-header-row *matHeaderRowDef="columnasMostrar"></tr>
     <tr mat-row *matRowDef="let row; columns: columnasMostrar;"></tr>
+    
   </table>
-  
+  <mat-paginator [length]="cantidadTotalRegistros"
+              [pageSize]="paginacion"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+              (page)="actualizarPaginacion($event)">
+</mat-paginator>
   

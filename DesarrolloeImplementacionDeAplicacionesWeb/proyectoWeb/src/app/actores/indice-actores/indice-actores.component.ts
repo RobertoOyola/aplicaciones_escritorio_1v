@@ -7,7 +7,7 @@ import { ActorDTO } from '../actores';
 
 @Component({
   selector: 'app-indice-actores',
-  imports: [MatButtonModule,RouterLink,MatTableModule],
+  imports: [MatButtonModule,RouterLink, MatTableModule],
   templateUrl: './indice-actores.component.html',
   styleUrl: './indice-actores.component.css'
 })
