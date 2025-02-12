@@ -22,5 +22,5 @@ export class IndiceCineComponent {
         this.listaCines = actores;
         console.log(this.listaCines);
       })
-    }
+    }//hola
 }
