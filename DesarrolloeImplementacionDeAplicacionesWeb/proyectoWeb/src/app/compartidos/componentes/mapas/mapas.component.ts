@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, input, OnInit, Output } from '@angular/core';
 import { LeafletModule } from '@bluehalo/ngx-leaflet';
 import { icon, latLng, LeafletMouseEvent, marker, Marker, MarkerOptions, tileLayer } from 'leaflet';
 import { Coordenadas } from './coordenadas';
@@ -9,8 +9,18 @@ import { Coordenadas } from './coordenadas';
   templateUrl: './mapas.component.html',
   styleUrl: './mapas.component.css'
 })
-export class MapasComponent {
-  @Output() coordenadasSeleccionadas = new EventEmitter<Coordenadas>();
+export class MapasComponent implements OnInit {
+  ngOnInit(): void {
+    this.capas = this.coordenadasIniciales.map(valor => {
+      const marcador = marker([valor.latitud, valor.longitud], this.markerOptions);
+      return marcador;
+    }) 
+  }
+  @Input() 
+  coordenadasIniciales: Coordenadas[] = [];
+
+  @Output() 
+  coordenadasSeleccionadas = new EventEmitter<Coordenadas>();
 
   options = {
     layers: [
@@ -33,16 +43,11 @@ export class MapasComponent {
   capas: Marker<any>[] = [];
 
   manejarClick(event: LeafletMouseEvent) {
-    const latitude = event.latlng.lat;
-    const longitude = event.latlng.lng;
-
-    // Emitir las coordenadas seleccionadas
-    this.coordenadasSeleccionadas.emit({ latitud: latitude, longitud: longitude });
-
-    // Añadir un marcador en las coordenadas seleccionadas
-    const newMarker = marker([latitude, longitude], this.markerOptions);
-
-    // Añadir el marcador a las capas para que se muestre en el mapa
-    this.capas = [newMarker];  // O usar `this.capas.push(newMarker);` si quieres agregar múltiples marcadores.
+    const latitud = event.latlng.lat;
+    const longitud = event.latlng.lng;
+    
+    this.capas = [];
+    this.capas.push(marker([latitud, longitud],this.markerOptions));
+    this.coordenadasSeleccionadas.emit({latitud, longitud});
   }
 }
