@@ -4,6 +4,9 @@ button{
 
 mat-form-field{
     width: 50%;
+    max-width: 500px;
+    display: block;
+    margin-top: 1rem;
 }
 
 .contenedor-botones{

@@ -5,10 +5,11 @@ import { MatInputModule } from '@angular/material/input';
 import { primeraLetraMayuscula } from '../../compartidos/componentes/funciones/validaciones';
 import { GeneroDTO, GenerosCreacionDTO } from '../generos';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-formulario-genero',
-  imports: [MatButtonModule,MatFormFieldModule, ReactiveFormsModule, MatInputModule],
+  imports: [MatButtonModule,MatFormFieldModule, ReactiveFormsModule, MatInputModule,RouterLink],
   templateUrl: './formulario-genero.component.html',
   styleUrl: './formulario-genero.component.css'
 })

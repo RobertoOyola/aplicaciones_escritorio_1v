@@ -1,27 +1,27 @@
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
-import { ActoresService } from '../../services/actores.service';
+import { ActoresService } from '../actores.service';
 import { ActorDTO } from '../actores';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-indice-actores',
-  imports: [MatButtonModule,RouterLink, MatTableModule],
+  imports: [MatButtonModule,RouterLink,MatTableModule],
   templateUrl: './indice-actores.component.html',
   styleUrl: './indice-actores.component.css'
 })
 export class IndiceActoresComponent {
+columnasMostrar: string[] = ['Id', 'Nombre','fechaNacimiento','Foto', 'Accion'];
 
-  columnasMostrar: string[] = ["id", "nombre","fechaNacimiento","foto", "accion"];
-  actores = inject(ActoresService);
-  listaActores!: ActorDTO[];
+  actor= inject(ActoresService);
+  listaActor!: ActorDTO[];
 
   constructor(){
-    this.actores.obtenerActores()
-    .subscribe(actores =>{
-      this.listaActores = actores;
-      console.log(this.listaActores);
-    })
+    this.actor.obtenerActores()
+                .subscribe(actor =>{
+      this.listaActor=actor;
+      console.log(this.listaActor);
+    });
   }
 }

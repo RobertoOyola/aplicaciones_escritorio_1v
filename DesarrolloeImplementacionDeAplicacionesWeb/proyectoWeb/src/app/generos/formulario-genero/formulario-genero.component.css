@@ -5,3 +5,7 @@ button{
 mat-form-field{
     width: 50%;
 }
+
+.contenedor-botones{
+    margin-top: 2rem;
+}

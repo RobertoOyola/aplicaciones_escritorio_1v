@@ -1,18 +1,17 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
-import { MapasComponent } from '../../compartidos/componentes/mapas/mapas.component';
 import { CineCreacionDTO } from '../cines';
-import { Coordenadas } from '../../compartidos/componentes/mapas/coordenadas';
+import { Coordenada } from '../../compartidos/componentes/mapa/Coordenadas';
+import { MapaComponent } from "../../compartidos/componentes/mapa/mapa.component";
 
 @Component({
   selector: 'app-formulario-cines',
-  imports: [MatFormFieldModule, MatFormField, ReactiveFormsModule, MatInputModule, MatButtonModule
-    ,RouterLink, MapasComponent
-  ],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatInputModule,
+    MatButtonModule, RouterLink, MapaComponent],
   templateUrl: './formulario-cines.component.html',
   styleUrl: './formulario-cines.component.css'
 })
@@ -20,7 +19,7 @@ export class FormularioCinesComponent implements OnInit{
   ngOnInit(): void {
     if(this.modelo !== undefined){
       this.form.patchValue(this.modelo);
-      this.coordenadasIniciales.push({latitud: this.modelo.latitud, longitud: this.modelo.longitud})
+      this.coordenadasIniciales.push({latitud: this.modelo.latitud, longitud:this.modelo.longitud});
     }
   }
 
@@ -31,19 +30,15 @@ export class FormularioCinesComponent implements OnInit{
   posteoFormulario = new EventEmitter<CineCreacionDTO>();
 
   @Input()
-  coordenadasIniciales: Coordenadas[] = [];
+  coordenadasIniciales: Coordenada[]=[];
 
   private formBuilder= inject(FormBuilder);
 
   form= this.formBuilder.group({
-    nombre: ['',[Validators.required]],
-    latitud: new FormControl<number | null>(null, [Validators.required]),
-    longitud: new FormControl<number | null>(null, [Validators.required])
+    nombre: ['', {validators: [Validators.required]}],
+    latitud: new FormControl<number  | null>(null,[Validators.required]),
+    longitud: new FormControl<number  | null>(null,[Validators.required]),
   });
-
-  coordenadasSeleccionadas(coordenadas: Coordenadas){
-    this.form.patchValue(coordenadas);
-  }
 
   obteneMensajeError(): string{
       let nombre = this.form.controls.nombre;
@@ -55,6 +50,10 @@ export class FormularioCinesComponent implements OnInit{
       
     }
 
+
+    coordenadSeleccionada(coordenada: Coordenada){
+        this.form.patchValue(coordenada);
+    }
   
     guardarCambios(){
       if(!this.form.valid){
@@ -68,4 +67,3 @@ export class FormularioCinesComponent implements OnInit{
   
 
 }
-

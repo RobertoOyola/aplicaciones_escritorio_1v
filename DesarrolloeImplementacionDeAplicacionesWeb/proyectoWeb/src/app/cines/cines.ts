@@ -1,8 +1,8 @@
-export interface CoordenadasDTO{
-    id:number;
-    texto?: string;
-    latitud:number;
-    longitud:number;
+export interface CineDTO{
+    id: number;
+    nombre: string;
+    latitud: number;
+    longitud: number;
 }
 
 export interface CineCreacionDTO{
