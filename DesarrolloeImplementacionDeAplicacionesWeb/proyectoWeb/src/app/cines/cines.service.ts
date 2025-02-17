@@ -1,6 +1,6 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { CineDTO } from './cines';
+import { CineCreacionDTO, CineDTO } from './cines';
 import { Observable } from 'rxjs';
 import { paginacionDTO } from '../compartidos/modelos/paginacionDTO';
 import { construirQueryParams } from '../compartidos/componentes/funciones/construirQueryParams';
@@ -28,6 +28,18 @@ export class CinesService {
 
    public eliminarCines(cineId: number){
     return this.http.delete(`${this.urlBase}/${cineId}`);
+  }
+  
+  public crearCine(cine: CineCreacionDTO){
+      return this.http.post(this.urlBase,cine);
+  }
+
+  public actualizarCine(cineId:number, cine: CineCreacionDTO){
+    return this.http.put(`${this.urlBase}/${cineId}`,cine)
+  }
+
+  public ObtenerCinePorId(cineId: number):Observable<CineDTO>{
+    return this.http.get<CineDTO>(`${this.urlBase}/${cineId}`);
   }
  
 }

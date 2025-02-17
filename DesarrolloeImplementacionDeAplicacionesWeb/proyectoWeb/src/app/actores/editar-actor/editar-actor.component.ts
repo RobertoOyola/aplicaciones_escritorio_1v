@@ -1,6 +1,9 @@
-import { Component, Input, numberAttribute } from '@angular/core';
+import { Component, inject, Input, numberAttribute, OnInit } from '@angular/core';
 import { ActorCreacionDTO, ActorDTO } from '../actores';
 import { FormularioActoresComponent } from "../formulario-actores/formulario-actores.component";
+import { ActoresService } from '../actores.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-editar-actor',
@@ -8,20 +11,34 @@ import { FormularioActoresComponent } from "../formulario-actores/formulario-act
   templateUrl: './editar-actor.component.html',
   styleUrl: './editar-actor.component.css'
 })
-export class EditarActorComponent {
-  @Input({transform: numberAttribute})
-  id! : number;
+export class EditarActorComponent implements OnInit{
 
-  actor: ActorDTO = 
-  {
-    id: 1, 
-    nombre: 'Tom Holland',
-    fechaNacimiento: new Date(1999,0,25),
-    foto: 'https://upload.wikimedia.org/wikipedia/commons/3/36/Tom_Holland_at_KCA_2022.jpg'
+  ngOnInit(): void {
+      this.obtenerActorPorId();
   }
 
+  @Input({transform: numberAttribute})
+  id! : number;
+  actor?: ActorDTO
+  actorService = inject(ActoresService)
+  router = inject(Router)
+
   guardarCambios(actor: ActorCreacionDTO){
-    console.log('Editando el actgor', actor);
+    this.actorService.actualizarActor(this.id, actor).subscribe({
+      next: () => {
+        this.router.navigate(['/actores']);
+      },
+      error: (error:HttpErrorResponse)=>{
+        console.log()
+      }
+    })
+  }
+
+  obtenerActorPorId(){
+    this.actorService.ObtenerActorPorId(this.id).subscribe((actor)=>{
+      console.log(actor);
+      this.actor = actor;
+    })
   }
 
 }

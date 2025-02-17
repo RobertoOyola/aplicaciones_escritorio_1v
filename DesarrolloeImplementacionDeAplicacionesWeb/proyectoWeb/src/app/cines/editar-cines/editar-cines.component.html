@@ -1,3 +1,7 @@
 <h2>Editar Cine</h2>
 
-<app-formulario-cines (posteoFormulario)="guardarCambios($event)" [modelo]="cine"></app-formulario-cines>
+@if(cine){
+    <app-formulario-cines (posteoFormulario)="guardarCambios($event)" [modelo]="cine"></app-formulario-cines>
+}@else {
+    <img src="loading.gif" alt="">
+}
