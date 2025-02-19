@@ -15,16 +15,29 @@
         <mat-error>{{obtenerErrorCampoFechaLanzamiento()}}</mat-error>
     </mat-form-field>
 
-      <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline">
         <mat-label>Tráiler</mat-label>
         <input matInput  [formControl]="this.form.controls.trailer">
     </mat-form-field>
 
-      <div>
+    <div>
         <app-input-img 
         [urlImagenActual]="modelo?.poster"
-        titulo="Foto del Actor" (archivoSeleccionado)="archivoSeleccionado($event)"  ></app-input-img>
-     </div>
+        titulo="Foto de la Pelicula" (archivoSeleccionado)="archivoSeleccionado($event)"  ></app-input-img>
+    </div>
+
+    <h4>Seleccione los Géneros</h4>
+
+    <app-selector-multiple [Seleccionado]="generosSeleccionados" [NoSeleccionado]="generosNoSeleccionados"></app-selector-multiple>
+
+    <h4>Seleccione los Cines</h4>
+
+    <app-selector-multiple [Seleccionado]="cinesSeleccionados" [NoSeleccionado]="cinesNoSeleccionados"></app-selector-multiple>
+
+    <h4>Seleccione los Actores</h4>
+
+    <app-autocomplete-actores [actoresSeleccionados]="actoresSeleccionados"></app-autocomplete-actores>
+
 
     <div class="contenedor-botones">
         <button mat-flat-button type="submit" [disabled]="form.invalid" >Guardar Cambios</button>

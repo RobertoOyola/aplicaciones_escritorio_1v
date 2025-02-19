@@ -18,3 +18,8 @@ img {
     padding: 10px;  
 }
   
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+    padding-top: 1%;
+  }

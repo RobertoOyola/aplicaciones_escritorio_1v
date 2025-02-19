@@ -9,3 +9,9 @@ table{
 table button{
     margin-left: 1rem;
 }
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+    padding-top: 1%;
+  }

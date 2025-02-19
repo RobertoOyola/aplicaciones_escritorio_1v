@@ -3,15 +3,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { ActoresService } from '../actores.service';
 import { ActorDTO } from '../actores';
-import { MatTableModule } from '@angular/material/table';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { paginacionDTO } from '../../compartidos/modelos/paginacionDTO';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import Swal from 'sweetalert2';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-indice-actores',
-  imports: [MatButtonModule,RouterLink,MatTableModule, MatPaginatorModule],
+  imports: [MatButtonModule,RouterLink,MatTableModule, MatPaginatorModule, MatFormFieldModule, MatInputModule],
   templateUrl: './indice-actores.component.html',
   styleUrl: './indice-actores.component.css'
 })
@@ -20,6 +22,8 @@ columnasMostrar: string[] = ['Id', 'Nombre','fechaNacimiento','Foto', 'Accion'];
 
   actor= inject(ActoresService);
   listaActor!: ActorDTO[];
+
+  dataSource: any;
 
   paginacion:paginacionDTO={pagina:1, recordsPorPagina:5}
   cantidadTotalRegistros!:number;
@@ -35,9 +39,15 @@ columnasMostrar: string[] = ['Id', 'Nombre','fechaNacimiento','Foto', 'Accion'];
         console.log(this.listaActor);
         const cabecera= resppuesta.headers.get("cantidad-total-registros") as string;
         this.cantidadTotalRegistros=parseInt(cabecera,10)
+        this.dataSource = new MatTableDataSource(this.listaActor);
       });
   }
 
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
   actualizarPaginacion(datos: PageEvent){
     this.paginacion ={pagina:datos.pageIndex+1, recordsPorPagina:datos.pageSize}
     this.cargarListadoActores();

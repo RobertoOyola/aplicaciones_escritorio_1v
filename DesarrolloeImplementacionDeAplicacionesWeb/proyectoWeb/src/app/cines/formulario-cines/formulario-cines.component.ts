@@ -50,7 +50,6 @@ export class FormularioCinesComponent implements OnInit{
       
     }
 
-
     coordenadSeleccionada(coordenada: Coordenada){
         this.form.patchValue(coordenada);
     }
